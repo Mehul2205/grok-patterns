@@ -1,0 +1,10 @@
+METHOD ^(GET|PUT|POST|DELETE)
+HOST [A-Za-z0-9\-\._~\/]*(:\d+)?
+API_KEY [a-z0-9]+
+ORG_ID [a-z0-9]{24}
+BOOLEAN TRUE|FALSE|true|false
+PRODUCT_LINE %{GREEDYDATA}x-bt-origin-%{HOSTNAME:gateway_host}%{GREEDYDATA}log_class-product:%{USER:product_line}%{GREEDYDATA}|%{GREEDYDATA}tenant_id-%{USER:tenant_id}%{GREEDYDATA}log_class-product:%{USER:product_line}%{GREEDYDATA}|%{GREEDYDATA}log_class-product:%{USER:product_line}%{GREEDYDATA}|%{GREEDYDATA:tyk_tag}
+CUSTOM_TIMESTAMP %{YEAR}-%{MONTHNUM}-%{MONTHDAY}[T ]%{HOUR}:?%{MINUTE}(?::?%{SECOND})? %{ISO8601_TIMEZONE}? %{TZ}
+
+APIM_ANALYTICS_LOGS %{METHOD:method},%{HOST:upstream_host},%{URIPATH:path},%{URIPATH:raw_path},%{INT:content_length},%{GREEDYDATA:user_agent},%{INT:timestamp_date},%{MONTH:month},%{YEAR:year},%{INT:hour},%{INT:response_code},%{API_KEY:api_key},%{CUSTOM_TIMESTAMP:analytics_timestamp},%{GREEDYDATA:api_version},%{GREEDYDATA:api_name},%{GREEDYDATA:api_id},%{GREEDYDATA:organization_id},%{GREEDYDATA:oauth_id},%{INT},%{GREEDYDATA},%{GREEDYDATA},%{IP:ip_address},%{GREEDYDATA},%{INT},%{GREEDYDATA},%{INT},%{INT},%{GREEDYDATA},%{INT},%{INT},%{INT},%{INT},%{INT:latency_total},%{INT:latency_upstream},%{PRODUCT_LINE},%{GREEDYDATA:alias},%{BOOLEAN},%{CUSTOM_TIMESTAMP},%{GREEDYDATA}
+
