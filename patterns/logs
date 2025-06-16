@@ -9,7 +9,7 @@ CUSTOMER_ID (cid_%{USERNAME:customer_id};)?
 TENANT_ID (tenant_id-%{USER:tenant_id};)?
 PRODUCT_LINE log_class-product:%{USER:product_line};
 
-TYK_TAGS %{GREEDYDATA}%{TYK_HEADERS}%{GREEDYDATA}%{CUSTOMER_ID}%{GREEDYDATA}%{TENANT_ID}%{GREEDYDATA}%{PRODUCT_LINE}%{GREEDYDATA}
+TYK_TAGS %{DATA}%{TYK_HEADERS}%{DATA}%{CUSTOMER_ID}%{DATA}%{TENANT_ID}%{DATA}%{PRODUCT_LINE}%{GREEDYDATA}
 CUSTOM_TIMESTAMP %{YEAR}-%{MONTHNUM}-%{MONTHDAY}[T ]%{HOUR}:?%{MINUTE}(?::?%{SECOND})? %{ISO8601_TIMEZONE}? %{TZ}
 
 APIM_ANALYTICS_LOGS %{METHOD:method},%{HOST:upstream_host},%{URIPATH:path},%{URIPATH:raw_path},%{INT:content_length},%{GREEDYDATA:user_agent},%{INT:timestamp_date},%{MONTH:month},%{YEAR:year},%{INT:hour},%{INT:response_code},%{API_KEY:api_key},%{CUSTOM_TIMESTAMP:analytics_timestamp},%{GREEDYDATA:api_version},%{GREEDYDATA:api_name},%{GREEDYDATA:api_id},%{GREEDYDATA:organization_id},%{GREEDYDATA:oauth_id},%{INT},%{GREEDYDATA},%{GREEDYDATA},%{IP:ip_address},%{GREEDYDATA},%{INT},%{GREEDYDATA},%{INT},%{INT},%{GREEDYDATA},%{INT},%{INT},%{INT},%{INT},%{INT:latency_total},%{INT:latency_upstream},%{TYK_TAGS:tyk_tags},%{GREEDYDATA:alias},%{BOOLEAN},%{CUSTOM_TIMESTAMP},%{GREEDYDATA}
