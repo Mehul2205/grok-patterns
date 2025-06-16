@@ -7,7 +7,7 @@ BOOLEAN TRUE|FALSE|true|false
 TYK_HEADERS (x-bt-origin-%{HOSTNAME:gateway_host};)?
 CUSTOMER_ID (cid_%{USERNAME:customer_id};)?
 TENANT_ID (tenant_id-%{USER:tenant_id};)?
-PRODUCT_LINE log_class-product:%{USER:product_line};
+PRODUCT_LINE (log_class-product:%{USER:product_line};)?
 
 TYK_TAGS %{DATA}%{TYK_HEADERS}%{DATA}%{CUSTOMER_ID}%{DATA}%{TENANT_ID}%{DATA}%{PRODUCT_LINE}%{GREEDYDATA}
 CUSTOM_TIMESTAMP %{YEAR}-%{MONTHNUM}-%{MONTHDAY}[T ]%{HOUR}:?%{MINUTE}(?::?%{SECOND})? %{ISO8601_TIMEZONE}? %{TZ}
