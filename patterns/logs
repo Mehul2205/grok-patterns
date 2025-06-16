@@ -4,10 +4,10 @@ API_KEY [a-z0-9]+
 ORG_ID [a-z0-9]{24}
 BOOLEAN TRUE|FALSE|true|false
 
-TYK_HEADERS (x-bt-origin-%{HOSTNAME:gateway_host})?
-CUSTOMER_ID (cid_%{USERNAME:customer_id}%)?
-TENANT_ID (tenant_id-%{USER:tenant_id})?
-PRODUCT_LINE (log_class-product:%{USER:product_line})?
+TYK_HEADERS (x-bt-origin-%{HOSTNAME:gateway_host};)?
+CUSTOMER_ID (cid_%{USERNAME:customer_id};)?
+TENANT_ID (tenant_id-%{USER:tenant_id};)?
+PRODUCT_LINE log_class-product:%{USER:product_line};
 
 TYK_TAGS %{GREEDYDATA}%{TYK_HEADERS}%{GREEDYDATA}%{CUSTOMER_ID}%{GREEDYDATA}%{TENANT_ID}%{GREEDYDATA}%{PRODUCT_LINE}%{GREEDYDATA}
 CUSTOM_TIMESTAMP %{YEAR}-%{MONTHNUM}-%{MONTHDAY}[T ]%{HOUR}:?%{MINUTE}(?::?%{SECOND})? %{ISO8601_TIMEZONE}? %{TZ}
